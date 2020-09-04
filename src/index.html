@@ -1,13 +1,38 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>PhotoStore</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
+
 <body>
+  <div id="root"></div>
   <app-root></app-root>
+  <script>
+    const event = new Event('authenticate');
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();      
+      const link = document.createElement('a');
+      link.href = '#';
+      link.innerHTML = 'SignOut';
+      link.onclick = function () {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          const rootDiv = document.getElementById('root');
+          rootDiv.innerHTML = '';
+        });
+      }
+      const div = document.getElementById('root');
+      div.append(link);
+      div.dispatchEvent(event);
+    }
+  </script>
 </body>
+
 </html>

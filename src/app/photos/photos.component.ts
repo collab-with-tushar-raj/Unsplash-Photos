@@ -13,7 +13,6 @@ import {
   distinctUntilChanged,
   switchMap,
 } from 'rxjs/operators';
-import { BrowserTransferStateModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-photos',
@@ -85,4 +84,12 @@ export class PhotosComponent implements OnInit, AfterViewInit {
     }
     this.fetchPhotoList(this.pageNumber, 12);
   }
+
+  // signOut(): void{
+  //   const auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(() => {
+  //     localStorage.removeItem('ProfileID');
+  //     console.log('User signed out.');
+  //   });
+  // }
 }
