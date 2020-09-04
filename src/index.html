@@ -11,12 +11,13 @@
 </head>
 
 <body>
-  <div id="root"></div>
-  <app-root></app-root>
+  <div id="root">
+    <app-root></app-root>
+  </div>
   <script>
     const event = new Event('authenticate');
     function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();      
+      var profile = googleUser.getBasicProfile();
       const link = document.createElement('a');
       link.href = '#';
       link.innerHTML = 'SignOut';
@@ -29,7 +30,7 @@
         });
       }
       const div = document.getElementById('root');
-      div.append(link);
+      div.prepend(link);
       div.dispatchEvent(event);
     }
   </script>
