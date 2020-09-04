@@ -45,7 +45,7 @@ export class PhotosComponent implements OnInit, AfterViewInit {
         distinctUntilChanged(),
         switchMap((value: string) => {
           if (value === '') {
-            return this.photosService.getUnsplashedPhotos(1, 12);
+            return this.photosService.getUnsplashedPhotos(this.pageNumber, 12);
           }
           return this.photosService.getSearchedPhotoFromUnsplash(value);
         })
@@ -84,12 +84,4 @@ export class PhotosComponent implements OnInit, AfterViewInit {
     }
     this.fetchPhotoList(this.pageNumber, 12);
   }
-
-  // signOut(): void{
-  //   const auth2 = gapi.auth2.getAuthInstance();
-  //   auth2.signOut().then(() => {
-  //     localStorage.removeItem('ProfileID');
-  //     console.log('User signed out.');
-  //   });
-  // }
 }
