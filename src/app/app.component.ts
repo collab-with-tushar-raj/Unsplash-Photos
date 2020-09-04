@@ -12,12 +12,20 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    const root = document.getElementById('root');
-    root.addEventListener(
+    const signOutBtn = document.querySelector('#root > button');
+    signOutBtn.addEventListener(
       'authenticate',
       (e) => {
-        console.log('***** ' + e);
+        console.log('authenticateEvent ' + e);
         this.router.navigate(['/photos']);
+      },
+      false
+    );
+    signOutBtn.addEventListener(
+      'deauthenticate',
+      (e) => {
+        console.log('deauthenticateEvent ' + e);
+        this.router.navigate(['/']);
       },
       false
     );

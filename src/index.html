@@ -12,26 +12,26 @@
 
 <body>
   <div id="root">
+    <button class="btn btn-primary d-none" style="margin-left:50%" onclick="signOut()">SignOut</button>
     <app-root></app-root>
   </div>
   <script>
-    const event = new Event('authenticate');
+    const authenticateEvent = new Event('authenticate');
+    const deauthenticateEvent = new Event('deauthenticate');
+    const signOutBtn = document.querySelector('#root > button')
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+        signOutBtn.className = 'btn btn-primary d-none';
+        signOutBtn.dispatchEvent(deauthenticateEvent);
+      });
+    }
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
-      const link = document.createElement('a');
-      link.href = '#';
-      link.innerHTML = 'SignOut';
-      link.onclick = function () {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-          const rootDiv = document.getElementById('root');
-          rootDiv.innerHTML = '';
-        });
-      }
-      const div = document.getElementById('root');
-      div.prepend(link);
-      div.dispatchEvent(event);
+      console.log('user signed in...' + profile);
+      signOutBtn.className = 'btn btn-primary d-block';
+      signOutBtn.dispatchEvent(authenticateEvent);
     }
   </script>
 </body>
