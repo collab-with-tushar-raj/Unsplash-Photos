@@ -21,13 +21,13 @@ export class AppComponent implements OnInit {
       },
       false
     );
-    signOutBtn.addEventListener(
-      'deauthenticate',
-      (e) => {
-        console.log('deauthenticateEvent ' + e);
-        this.router.navigate(['/']);
-      },
-      false
-    );
+    // signOutBtn.addEventListener(
+    //   'deauthenticate',
+    //   (e) => {
+    //     console.log('deauthenticateEvent ' + e);
+    //     this.router.navigate(['/']);
+    //   },
+    //   false
+    // );
   }
 }
