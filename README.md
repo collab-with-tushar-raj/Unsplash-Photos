@@ -4,7 +4,7 @@ https://github.com/Tush2890/Photos_Store/assets/39027684/7563bdbc-00ef-4934-a88a
 
 # PhotoStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3. The project has been recently upgraded to version 11.
 
 ## Development server
 
